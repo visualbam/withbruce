@@ -1,7 +1,7 @@
 ﻿withbruce.com {
-    reverse_proxy withbruce-blazor:80
+    reverse_proxy blazor-wb:80
 }
 
 www.withbruce.com {
-    reverse_proxy withbruce-blazor:80
+    reverse_proxy blazor-wb:80
 }
