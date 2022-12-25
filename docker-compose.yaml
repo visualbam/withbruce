@@ -2,12 +2,14 @@
 
 services:
     web:
-        image: withbruce-blazor
+        image: blazor-wb
+        container_name: blazor-wb
         build: .
         ports:
             - "8080:80"
     caddy:
         image: caddy:latest
+        container_name: caddy-wb
         restart: unless-stopped
         ports:
             - "80:80"
