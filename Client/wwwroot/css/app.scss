@@ -1,0 +1,13 @@
+﻿@import "bootstrap";
+@import "colors";
+
+html, body, #app {
+    height: 100vh;
+}
+
+.temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

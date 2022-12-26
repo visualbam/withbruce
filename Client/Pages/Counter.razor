@@ -10,9 +10,12 @@
 
 @code {
     private int currentCount = 0;
+    private IEnumerable<string> Animals = new List<string>() { "Dog", "Cat" };
 
     private void IncrementCount()
     {
+        Animals.Select(x => x.Length + '+');
+        Console.WriteLine(Animals.FirstOrDefault());
         currentCount++;
     }
 }
