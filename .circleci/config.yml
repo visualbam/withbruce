@@ -1,12 +1,18 @@
 version: 2.1
 
+executors:
+  docker:
+    environment:
+      DOCKER_HUB_USERNAME: ${DOCKER_HUB_USERNAME}
+      DOCKER_HUB_PASSWORD: ${DOCKER_HUB_PASSWORD}
+    docker:
+      - image: docker:stable
+
 jobs:
   build:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:7.0
-    environment:
-      DOCKER_HUB_USERNAME: ${DOCKER_HUB_USERNAME}
-      DOCKER_HUB_PASSWORD: ${DOCKER_HUB_PASSWORD}
+    executor: docker
     steps:
       - checkout
       - restore_cache:
