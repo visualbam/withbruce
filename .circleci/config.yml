@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/dotnet:latest
+      - image: mcr.microsoft.com/dotnet/sdk:7.0
     environment:
       DOCKER_HUB_USERNAME: ${DOCKER_HUB_USERNAME}
       DOCKER_HUB_PASSWORD: ${DOCKER_HUB_PASSWORD}
@@ -26,6 +26,12 @@ jobs:
             dotnet build
             dotnet test
       - run:
+          name: Publish and create Docker image
+          command: |
+            dotnet publish -c Release -o out
+            docker build -t my-blazor-app .
+      - run:
           name: Deploy to staging
           command: |
-            docker-compose up -d --build
+            docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+            docker-compose -f docker-compose.yml up -d
