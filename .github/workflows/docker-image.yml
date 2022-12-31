@@ -38,11 +38,12 @@ jobs:
           apt-get install -y python3 python3-pip
           pip3 install docker-compose
       - name: Set up DigitalOcean CLI
-        uses: digitalocean/setup-doctl@v1
+        uses: digitalocean/setup-doctl@v2
         with:
           access-token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - name: Deploy to staging
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
           doctl compute ssh withbruce
+          cd apps/withbruce
           docker-compose -f docker-compose.yml up -d 
