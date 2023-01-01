@@ -94,3 +94,9 @@ jobs:
           command: |
             doctl auth init -t $DIGITALOCEAN_ACCESS_TOKEN
           name: Initialize doctl
+      - run:
+          command: |
+            docker pull visualbam/withbruce-project:latest
+            docker compose down
+            docker compose up -d --build
+          
