@@ -41,7 +41,7 @@ jobs:
           name: Publish and create Docker image
           command: |
             dotnet publish -c Release -o out
-            docker build -t withbruce-project .
+            docker-compose build -t withbruce-project .
       - run:
           name: Deploy to staging
           command: |
