@@ -12,13 +12,6 @@ executors:
     docker:
       - image: docker:stable
       
-parameters:
-  digitalocean-access-token:
-    default: DIGITALOCEAN_ACCESS_TOKEN
-    description: |
-      Name of environment variable storing the digitalocean v2 api access token
-    type: env_var_name
-
 jobs:
   build:
     docker:
@@ -58,5 +51,5 @@ jobs:
           param: <<parameters.digitalocean-access-token>>
       - run:
           command: |
-            doctl auth init -t $<<parameters.digitalocean-access-token>>
+            doctl auth init -t $DIGITALOCEAN_ACCESS_TOKEN
           name: Initialize doctl
