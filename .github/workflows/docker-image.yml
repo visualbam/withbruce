@@ -12,16 +12,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
+        
     - name: Restore dependencies
       run: dotnet restore
+      
     - name: Build and test
       run: |
         dotnet build
         dotnet test
+        
     - name: Publish and create Docker image
       run: |
         dotnet publish -c Release -o out
@@ -32,15 +36,19 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v3
+      
       - name: Install doctl
         uses: digitalocean/action-doctl@v2.3.0
         with:
+          version: 2.3.0
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          
       - name: Set up Docker Compose
         run: |
           sudo apt-get update
           sudo apt-get install -y python3 python3-pip
           pip3 install docker-compose
+          
       - name: Deploy to staging
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
