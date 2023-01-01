@@ -11,22 +11,15 @@ executors:
       DOCKER_HUB_PASSWORD: $DOCKER_HUB_PASSWORD
     docker:
       - image: docker:stable
+      
+parameters:
+  digitalocean-access-token:
+    default: DIGITALOCEAN_ACCESS_TOKEN
+    description: |
+      Name of environment variable storing the digitalocean v2 api access token
+    type: env_var_name
 
 jobs:
-  deploy:
-    description: |
-      Install doctl and initialize to connect to DigitalOcean
-    executor: doctl/default
-    parameters:
-      executor:
-        default: default
-        description: |
-          Executor to use for this job. Defaults to this orb's default executor.
-        type: executor
-    steps:
-      - install
-      - initialize:
-          digitalocean-access-token: $DIGITALOCEAN_ACCESS_TOKEN
   build:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:7.0
@@ -60,13 +53,10 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
           docker_layer_caching: true
+      - orb-tools/check-env-var-param:
+        command-name: Checking whether required env vars are set to initialize doctl CLI...
+        param: <<parameters.digitalocean-access-token>>
       - run:
-          name: Publish and create Docker image
           command: |
-            dotnet publish -c Release -o out
-            docker build -t visualbam/withbruce-project:latest .
-      - run:
-          name: Push Docker Image
-          command: |
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker push visualbam/withbruce-project:latest
+            doctl auth init -t $<<parameters.digitalocean-access-token>>
+          name: Initialize doctl
