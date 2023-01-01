@@ -7,8 +7,8 @@ orbs:
 executors:
   docker:
     environment:
-      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-      DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+      DOCKER_HUB_USERNAME: $DOCKER_HUB_USERNAME
+      DOCKER_HUB_PASSWORD: $DOCKER_HUB_PASSWORD
     docker:
       - image: docker:stable
 
@@ -24,7 +24,7 @@ jobs:
           Executor to use for this job. Defaults to this orb's default executor.
         type: executor
       digitalocean-access-token:
-        default: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} 
+        default: $DIGITALOCEAN_ACCESS_TOKEN
         description: The access token to connect DigitalOcean
         type: env_var_name
     steps:
