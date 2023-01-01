@@ -23,12 +23,8 @@ jobs:
         description: |
           Executor to use for this job. Defaults to this orb's default executor.
         type: executor
-      digitalocean-access-token:
-        default: $DIGITALOCEAN_ACCESS_TOKEN
-        description: The access token to connect DigitalOcean
-        type: env_var_name
     steps:
       - install
       - initialize:
-          digitalocean-access-token: <<parameters.digitalocean-access-token>> 
+          digitalocean-access-token: $DIGITALOCEAN_ACCESS_TOKEN
             
