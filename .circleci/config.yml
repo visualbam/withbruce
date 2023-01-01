@@ -37,9 +37,10 @@ jobs:
       - run:
           name: Set up Docker Compose
           command: |
-            RUN apt-get update
-            RUN apt-get install -y docker.io
-            RUN apt-get install -y python3 python3-pip
+            apt install sudo
+            sudo apt-get update
+            sudo apt-get install -y docker.io
+            sudo apt-get install -y python3 python3-pip
             pip3 install docker-compose
             service docker start
       - run:
