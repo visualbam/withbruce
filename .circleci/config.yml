@@ -6,8 +6,8 @@ orbs:
 executors:
   docker:
     environment:
-      DOCKER_HUB_USERNAME: ${DOCKER_HUB_USERNAME}
-      DOCKER_HUB_PASSWORD: ${DOCKER_HUB_PASSWORD}
+      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+      DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
     docker:
       - image: docker:stable
 
@@ -18,17 +18,9 @@ jobs:
     executor: docker
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - dotnet-deps-{{ checksum "project.assets.json" }}
-            - dotnet-deps-
       - run:
           name: Restore dependencies
           command: dotnet restore
-      - save_cache:
-          paths:
-            - ".nuget"
-          key: dotnet-deps-{{ checksum "project.assets.json" }}
       - run:
           name: Build and test
           command: |
@@ -37,10 +29,9 @@ jobs:
       - run:
           name: Set up Docker Compose
           command: |
-            apt install sudo
-            sudo apt-get update
-            sudo apt-get install -y docker.io
-            sudo apt-get install -y python3 python3-pip
+            apt-get update
+            apt-get install -y docker.io
+            apt-get install -y python3 python3-pip
             pip3 install docker-compose
             service docker start
       - run:
