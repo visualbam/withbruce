@@ -11,7 +11,6 @@ executors:
       DOCKER_HUB_PASSWORD: $DOCKER_HUB_PASSWORD
     docker:
       - image: docker:stable
-      
 jobs:
   build:
     docker:
@@ -48,9 +47,10 @@ jobs:
           docker_layer_caching: true
       - run:
           name: Push Docker Image
+          environment:
+            DOCKER_HUB_USERNAME: $DOCKER_HUB_USERNAME
+            DOCKER_HUB_PASSWORD: $DOCKER_HUB_PASSWORD
           command: |
-            echo "$DOCKER_HUB_USERNAME"
-            echo ${DOCKER_HUB_PASSWORD}
             docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
             docker push visualbam/withbruce-project:latest
       - run:
