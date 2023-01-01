@@ -47,15 +47,10 @@ jobs:
           version: 20.10.14
           docker_layer_caching: true
       - run:
-          name: Publish and create Docker image
-          command: |
-            dotnet publish -c Release -o out
-            docker build -t visualbam/withbruce-project:latest .
-      - run:
           name: Push Docker Image
           command: |
-            echo $DOCKER_HUB_USERNAME
-            echo $DOCKER_HUB_PASSWORD
+            echo "$DOCKER_HUB_USERNAME"
+            echo ${DOCKER_HUB_PASSWORD}
             docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
             docker push visualbam/withbruce-project:latest
       - run:
