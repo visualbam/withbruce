@@ -51,7 +51,7 @@ jobs:
             DOCKER_HUB_USERNAME: $DOCKER_HUB_USERNAME
             DOCKER_HUB_PASSWORD: $DOCKER_HUB_PASSWORD
           command: |
-            docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+            docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
             docker push visualbam/withbruce-project:latest
       - run:
           command: >
