@@ -13,6 +13,8 @@ executors:
 
 jobs:
   build:
+    machine:
+      image: ubuntu-2204:2022.04.2  
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:7.0
     executor: docker
