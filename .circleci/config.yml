@@ -53,5 +53,5 @@ jobs:
       - run:
           name: Push Docker Image
           command: |
-            env | grep "^$DOCKER_PASS=" | cut -d= -f2 | docker login -u "$DOCKER_USER" --password-stdin
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker push visualbam/withbruce-project:latest 
