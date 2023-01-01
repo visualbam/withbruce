@@ -49,9 +49,9 @@ jobs:
           name: Publish and create Docker image
           command: |
             dotnet publish -c Release -o out
-            docker build -t visualbam/withbruce-project .
+            docker build -t visualbam/withbruce-project:latest .
       - run:
           name: Push Docker Image
           command: |
-            docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
-            docker push visualbam/withbruce-project:latest
+            docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+            docker push visualbam/withbruce-project:latest 
