@@ -42,8 +42,3 @@ jobs:
           command: |
             dotnet publish -c Release -o out
             docker-compose build -t withbruce-project .
-      - run:
-          name: Deploy to staging
-          command: |
-            docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
-            docker-compose -f docker-compose.yml up -d
