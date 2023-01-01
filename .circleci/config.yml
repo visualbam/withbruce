@@ -13,8 +13,6 @@ executors:
 
 jobs:
   build:
-    machine:
-      - image: ubuntu-2204:2022.04.2  
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:7.0
     executor: docker
@@ -36,7 +34,9 @@ jobs:
             curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o ~/docker-compose
             chmod +x ~/docker-compose
             mv ~/docker-compose /usr/local/bin/docker-compose
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
       - run:
           name: Publish and create Docker image
           command: |
