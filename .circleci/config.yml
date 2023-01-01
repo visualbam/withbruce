@@ -54,8 +54,8 @@ jobs:
           version: 20.10.14
           docker_layer_caching: true
       - orb-tools/check-env-var-param:
-        command-name: Checking whether required env vars are set to initialize doctl CLI...
-        param: <<parameters.digitalocean-access-token>>
+          command-name: Checking whether required env vars are set to initialize doctl CLI...
+          param: <<parameters.digitalocean-access-token>>
       - run:
           command: |
             doctl auth init -t $<<parameters.digitalocean-access-token>>
