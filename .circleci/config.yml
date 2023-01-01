@@ -46,4 +46,4 @@ jobs:
           name: Push Docker Image
           command: |
             echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
-            docker push visualbam/withbruce-project:latest
+            docker-compose push visualbam/withbruce-project:latest
