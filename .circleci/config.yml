@@ -108,7 +108,6 @@ jobs:
             docker volume create caddy_data
             docker volume create caddy_config
             docker pull visualbam/withbruce-project:latest
-            mv -f Caddyfile /root/project/Caddyfile
             docker-compose down
             docker-compose up -d --build
           
