@@ -17,7 +17,7 @@ jobs:
       - image: mcr.microsoft.com/dotnet/sdk:7.0
     executor: docker
     steps:
-      - checkout      
+      - checkout
       - run:
           name: Restore dependencies
           command: dotnet restore
@@ -49,6 +49,8 @@ jobs:
           name: Push Docker Image
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker build -t visualbam/withbruce-project-web:latest .
+            docker push visualbam/withbruce-project-web:latest
             docker push visualbam/withbruce-project:latest
       - run:
           command: >
