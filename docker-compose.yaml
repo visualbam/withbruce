@@ -4,7 +4,7 @@ services:
     web:
         image: blazor-wb
         container_name: blazor-wb
-        build: .
+        build: visualbam/withbruce-project-web
         ports:
             - "8080:80"
     caddy:
