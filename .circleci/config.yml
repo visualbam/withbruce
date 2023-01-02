@@ -102,6 +102,7 @@ jobs:
           name: Initialize doctl
       - run:
           command: |
+            ls
             export MONGO_USERNAME=$MONGO_USERNAME
             export MONGO_PASSWORD=$MONGO_PASSWORD
             docker volume create mongodb
