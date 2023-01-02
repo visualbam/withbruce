@@ -102,13 +102,12 @@ jobs:
           name: Initialize doctl
       - run:
           command: |
-            ls
-            cat Caddyfile
             export MONGO_USERNAME=$MONGO_USERNAME
             export MONGO_PASSWORD=$MONGO_PASSWORD
             docker volume create mongodb
             docker volume create caddy_data
             docker volume create caddy_config
+            cp Caddyfile /root/project/
             docker pull visualbam/withbruce-project:latest
             docker-compose down
             docker-compose up -d --build
