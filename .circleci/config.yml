@@ -103,6 +103,7 @@ jobs:
       - run:
           command: |
             ls
+            cat Caddyfile
             export MONGO_USERNAME=$MONGO_USERNAME
             export MONGO_PASSWORD=$MONGO_PASSWORD
             docker volume create mongodb
