@@ -39,8 +39,6 @@ jobs:
       
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
-        with:
-          version: v2.3.0
           
       - name: Configure doctl
         run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
