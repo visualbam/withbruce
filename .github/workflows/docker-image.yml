@@ -39,7 +39,7 @@ jobs:
       
       - name: Install doctl
         run: |
-          sudo apt-get install curl tar
+          apt-get install curl tar
           curl -sL https://github.com/digitalocean/doctl/releases/download/v1.53.0/doctl-1.53.0-linux-amd64.tar.gz | tar -xvz
         env:
           PATH: "$PATH:/usr/local/bin"
