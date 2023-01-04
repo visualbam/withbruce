@@ -38,7 +38,9 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Install doctl
-        uses: digitalocean/action-doctl@v2
+        run: curl -sL https://github.com/digitalocean/doctl/releases/download/v1.53.0/doctl-1.53.0-linux-amd64.tar.gz | tar -xvz
+        env:
+          PATH: "$PATH:/usr/local/bin"
           
       - name: Configure doctl
         run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
