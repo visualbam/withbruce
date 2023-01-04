@@ -37,11 +37,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Install curl and tar
-        run: sudo apt-get install curl tar
-      
       - name: Install doctl
-        run: curl -sL https://github.com/digitalocean/doctl/releases/download/v1.53.0/doctl-1.53.0-linux-amd64.tar.gz | tar -xvz
+        run: |
+          sudo apt-get install curl tar
+          curl -sL https://github.com/digitalocean/doctl/releases/download/v1.53.0/doctl-1.53.0-linux-amd64.tar.gz | tar -xvz
         env:
           PATH: "$PATH:/usr/local/bin"
           
