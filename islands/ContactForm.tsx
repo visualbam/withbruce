@@ -2,14 +2,29 @@ import { useSignal } from "@preact/signals";
 
 export default function ContactForm() {
   const submitted = useSignal(false);
+  const submitting = useSignal(false);
+  const error = useSignal("");
   const name = useSignal("");
   const email = useSignal("");
   const message = useSignal("");
 
-  function handleSubmit(e: Event) {
+  async function handleSubmit(e: Event) {
     e.preventDefault();
-    // Static site — no backend. Show success state.
-    submitted.value = true;
+    submitting.value = true;
+    error.value = "";
+
+    const res = await fetch("https://formspree.io/f/mdaynenq", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ name: name.value, email: email.value, message: message.value }),
+    });
+
+    if (res.ok) {
+      submitted.value = true;
+    } else {
+      error.value = "Something went wrong. Please try again.";
+    }
+    submitting.value = false;
   }
 
   if (submitted.value) {
@@ -62,8 +77,9 @@ export default function ContactForm() {
               (message.value = (e.target as HTMLTextAreaElement).value)}
           />
         </div>
-        <button class="button button--primary" type="submit">
-          Submit
+        {error.value && <p role="alert" class="form-error">{error.value}</p>}
+        <button class="button button--primary" type="submit" disabled={submitting.value}>
+          {submitting.value ? "Sending..." : "Submit"}
         </button>
       </form>
     </>
