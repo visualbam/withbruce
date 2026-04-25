@@ -76,21 +76,21 @@ h1:focus { outline: none !important; }
 html { font-size: 16px; }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   line-height: 1.65;
 }
 
 p { font-size: 1em; }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Archivo', sans-serif;
   line-height: 1.15;
   font-weight: 600;
   text-wrap: balance;
 }
 
 h1 {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Archivo', sans-serif;
   margin-top: 0;
   font-size: var(--text-4xl);
 }
@@ -126,12 +126,12 @@ small { font-size: var(--text-sm); }
    ========================================================================== */
 html {
   color: #354155;
-  height: 100svh;
+  min-height: 100svh;
 }
 
 body {
-  height: 100svh;
-  font-family: 'Inter', sans-serif;
+  min-height: 100svh;
+  font-family: 'Space Grotesk', sans-serif;
   line-height: 1.5;
   text-wrap: pretty;
 }
@@ -282,7 +282,7 @@ html.dark  .main-navigation .progress-bar { background: var(--clr-slate-600); }
   background: var(--clr-primary-600);
   z-index: 20;
   height: 5px;
-  transition: width 50ms linear;
+  transition: width 50ms ease-out;
 }
 
 /* ==========================================================================
@@ -326,10 +326,12 @@ html.dark  .main-navigation .progress-bar { background: var(--clr-slate-600); }
   }
 }
 
-.hero h1 {
+.hero .hero-name {
   grid-area: name;
   color: var(--clr-primary-400);
+  font-family: 'Archivo', sans-serif;
   font-size: var(--text-lg);
+  font-weight: 600;
   display: flex;
   flex-direction: row-reverse;
   justify-content: start;
@@ -339,10 +341,10 @@ html.dark  .main-navigation .progress-bar { background: var(--clr-slate-600); }
 }
 
 @media (min-width: 800px) {
-  .hero h1 { margin: 0; }
+  .hero .hero-name { margin: 0; }
 }
 
-.hero h2            { grid-area: title;       max-width: 26ch; }
+.hero h1            { grid-area: title;       max-width: 26ch; }
 .hero p             { grid-area: description; max-width: 50ch; }
 .hero a             { grid-area: cta;         height: fit-content; }
 
@@ -359,11 +361,12 @@ html.dark  .main-navigation .progress-bar { background: var(--clr-slate-600); }
 .hero figure img:not(:first-child) {
   position: absolute;
   top: 0;
-  animation: hover-effect 2s ease-in-out infinite;
 }
 
-.hero figure img:not(:first-child):nth-child(odd)  { animation: hover-effect-up   2s ease-in-out infinite; }
-.hero figure img:not(:first-child):nth-child(even) { animation: hover-effect-down 2s ease-in-out infinite; }
+/* Only 3 icons animate — staggered so they don't all move together */
+.hero figure img:nth-child(3) { animation: hover-effect-up   3s ease-in-out infinite; animation-delay: 0s;   }
+.hero figure img:nth-child(5) { animation: hover-effect-down 3s ease-in-out infinite; animation-delay: 1s;   }
+.hero figure img:nth-child(7) { animation: hover-effect-up   3s ease-in-out infinite; animation-delay: 2s;   }
 .hero figure img:first-child { width: 100%; }
 
 .hero figure img:nth-child(2) { left: 50px;  top: 175px;  }
@@ -402,7 +405,7 @@ html.dark  .services { background: var(--clr-slate-950); color: var(--clr-slate-
 }
 
 .services header span {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Archivo', sans-serif;
   font-weight: 600;
   font-size: var(--text-base);
   text-transform: uppercase;
@@ -435,11 +438,11 @@ html.dark  .services header span { color: var(--clr-primary-400); }
   gap: 1rem;
   padding: 2rem 1rem;
   text-align: center;
-  transition: background ease-in-out 0.2s;
+  transition: background 0.2s ease-out;
 }
 
 html.light .services figure { background: var(--clr-slate-100); color: var(--clr-slate-700); }
-html.dark  .services figure { background: var(--clr-slate-900); color: var(--clr-secondary-400); }
+html.dark  .services figure { background: var(--clr-slate-900); color: var(--clr-slate-300); }
 
 html.light .services figure:hover { background: var(--clr-slate-50); }
 html.dark  .services figure:hover { background: var(--clr-slate-800); }
@@ -479,7 +482,7 @@ html.dark  .featured-projects { background: var(--clr-slate-900);   color: var(-
 }
 
 .featured-projects__main header span {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Archivo', sans-serif;
   font-weight: 600;
   font-size: var(--text-base);
   text-transform: uppercase;
@@ -517,10 +520,10 @@ html.dark  .featured-projects__main header span { color: var(--clr-primary-400);
 .featured-projects figure:hover { cursor: pointer; }
 
 .featured-projects figure:hover button {
-  scale: 1.08;
+  transform: scale(1.08);
   border-color: var(--clr-primary-500);
   color: var(--clr-primary-500);
-  background: rgba(0, 0, 0, 1);
+  background: rgba(0, 0, 0, 0.85);
 }
 
 .featured-projects button {
@@ -530,13 +533,13 @@ html.dark  .featured-projects__main header span { color: var(--clr-primary-400);
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  background: rgba(0, 0, 0, 0.55);
-  border: 2px solid var(--clr-slate-500);
-  color: var(--clr-slate-300);
+  background: rgba(0, 0, 0, 0.45);
+  border: 2px solid var(--clr-slate-400);
+  color: var(--clr-slate-200);
   padding: 0.65rem 0.85rem;
   border-radius: 6px;
   width: fit-content;
-  transition: all ease-in-out 0.15s;
+  transition: all 0.15s ease-out;
 }
 
 /* ==========================================================================
@@ -571,7 +574,7 @@ html.dark  .experience { background: var(--clr-slate-950); color: var(--clr-slat
 }
 
 .experience header span {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Archivo', sans-serif;
   font-weight: 600;
   font-size: var(--text-base);
   text-transform: uppercase;
@@ -595,7 +598,7 @@ html.dark  .experience header span { color: var(--clr-primary-400); }
   gap: 1rem;
   padding: 1rem;
   border-radius: 6px;
-  transition: background ease-in-out 0.2s;
+  transition: background 0.2s ease-out;
 }
 
 html.light .experience figure { background: var(--clr-slate-100); color: var(--clr-slate-700); }
@@ -755,6 +758,12 @@ html.dark  .project-navigation { border-color: var(--clr-slate-800); }
   transform: scale(1);
 }
 
+.project-nav-link:focus-visible {
+  outline: 2px solid var(--clr-primary-500);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 .project-nav-link .preview-image {
   grid-area: preview;
   display: flex;
@@ -814,8 +823,8 @@ html.dark  .project-nav-link h5 { color: var(--clr-slate-300); }
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: transform 0.25s, opacity 0.25s;
-  transform: scale(0);
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  transform: scale(0.7);
 }
 
 @media (min-width: 570px) {
@@ -857,7 +866,7 @@ html.dark  .contact { color: var(--clr-slate-300); }
 }
 
 .contact header span {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Archivo', sans-serif;
   font-weight: 600;
   font-size: var(--text-base);
   text-transform: uppercase;
@@ -983,6 +992,57 @@ html.dark  .tag { background: var(--clr-slate-600); color: var(--clr-slate-200);
 
 html.light .tag:hover { background: var(--clr-slate-300); }
 html.dark  .tag:hover { background: var(--clr-slate-700); }
+
+/* ==========================================================================
+   Skip Link
+   ========================================================================== */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--clr-primary-600);
+  color: #fff !important;
+  border-radius: 0 0 6px 6px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: top 0.15s ease-out;
+}
+.skip-link:focus { top: 0; }
+
+/* ==========================================================================
+   Focus Styles
+   ========================================================================== */
+.contact .form-field input:focus-visible,
+.contact .form-field textarea:focus-visible {
+  outline: 2px solid var(--clr-primary-500);
+  outline-offset: 2px;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--clr-primary-400);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Spinner
+   ========================================================================== */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+  vertical-align: middle;
+  margin-right: 0.4em;
+}
 
 /* ==========================================================================
    Reduced motion
