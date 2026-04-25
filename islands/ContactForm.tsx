@@ -30,8 +30,18 @@ export default function ContactForm() {
   if (submitted.value) {
     return (
       <div role="alert" class="contact-success">
-        <span>Message received!</span>{" "}
-        Thanks for reaching out, {name.value}. I'll get back to you soon.
+        <div class="contact-success__icon" aria-hidden="true">
+          {/* deno-lint-ignore no-explicit-any */}
+          <iconify-icon {...({} as any)} icon="ph:check-circle-duotone" width="52" height="52" />
+        </div>
+        <div class="contact-success__content">
+          <p class="contact-success__eyebrow">Message sent</p>
+          <h2 class="contact-success__heading">Talk soon, {name.value}.</h2>
+          <p class="contact-success__body">
+            Your message is in my inbox. I'll review it and get back to you within a couple of business days.
+          </p>
+        </div>
+        <a href="/" class="button button--secondary">Back to Home</a>
       </div>
     );
   }
@@ -53,6 +63,7 @@ export default function ContactForm() {
             type="text"
             required
             autocomplete="name"
+            placeholder="Your full name"
             value={name.value}
             onInput={(e) => (name.value = (e.target as HTMLInputElement).value)}
           />
@@ -64,6 +75,7 @@ export default function ContactForm() {
             type="email"
             required
             autocomplete="email"
+            placeholder="your@email.com"
             value={email.value}
             onInput={(e) =>
               (email.value = (e.target as HTMLInputElement).value)}
@@ -74,6 +86,7 @@ export default function ContactForm() {
           <textarea
             id="message"
             required
+            placeholder="Describe your project, goals, or questions..."
             value={message.value}
             onInput={(e) =>
               (message.value = (e.target as HTMLTextAreaElement).value)}
@@ -83,7 +96,7 @@ export default function ContactForm() {
         <button class="button button--primary" type="submit" disabled={submitting.value}>
           {submitting.value
             ? <><span class="spinner" aria-hidden="true" />Sending...</>
-            : "Submit"}
+            : "Send Message"}
         </button>
       </form>
     </>
