@@ -15,7 +15,7 @@ export default define.page(function App({ Component }) {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Condensed:wght@600&family=Roboto+Slab:wght@600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
         {/* Iconify web components for icons */}
@@ -38,8 +38,9 @@ export default define.page(function App({ Component }) {
         />
       </head>
       <body>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
         <Navigation />
-        <main class="content-grid">
+        <main id="main-content" class="content-grid">
           <Component />
         </main>
         <Footer />

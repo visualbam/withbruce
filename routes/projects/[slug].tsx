@@ -79,6 +79,7 @@ export default define.page(function ProjectDetail(ctx) {
                 icon="mdi:chevron-left"
                 width="30"
                 height="30"
+                aria-hidden="true"
               />
             </div>
             <span>Previous Project</span>
@@ -97,6 +98,7 @@ export default define.page(function ProjectDetail(ctx) {
                 icon="mdi:chevron-right"
                 width="30"
                 height="30"
+                aria-hidden="true"
               />
             </div>
             <span>Next Project</span>

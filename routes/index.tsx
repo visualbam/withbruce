@@ -29,12 +29,12 @@ export default define.page(function Home() {
       {/* Hero */}
       <section class="hero full-width">
         <article>
-          <h1>
+          <p class="hero-name">
             Bruce McElroy{" "}
             {/* deno-lint-ignore no-explicit-any */}
-            <iconify-icon {...({} as any)} icon="ph:lightning-duotone" />
-          </h1>
-          <h2>UI/UX Designer & Software Developer Based in Pittsburgh</h2>
+            <iconify-icon {...({} as any)} icon="ph:lightning-duotone" aria-hidden="true" />
+          </p>
+          <h1>UI/UX Designer &amp; Software Developer Based in Pittsburgh</h1>
           <p>
             Leveraging a decade of industry experience, I integrate
             sophisticated design principles with robust software development to

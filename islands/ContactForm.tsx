@@ -52,6 +52,7 @@ export default function ContactForm() {
             id="name"
             type="text"
             required
+            autocomplete="name"
             value={name.value}
             onInput={(e) => (name.value = (e.target as HTMLInputElement).value)}
           />
@@ -62,6 +63,7 @@ export default function ContactForm() {
             id="email"
             type="email"
             required
+            autocomplete="email"
             value={email.value}
             onInput={(e) =>
               (email.value = (e.target as HTMLInputElement).value)}
@@ -79,7 +81,9 @@ export default function ContactForm() {
         </div>
         {error.value && <p role="alert" class="form-error">{error.value}</p>}
         <button class="button button--primary" type="submit" disabled={submitting.value}>
-          {submitting.value ? "Sending..." : "Submit"}
+          {submitting.value
+            ? <><span class="spinner" aria-hidden="true" />Sending...</>
+            : "Submit"}
         </button>
       </form>
     </>
