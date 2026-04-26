@@ -130,37 +130,48 @@ export default define.page(function Home() {
 
       {/* Featured Projects */}
       <section class="featured-projects full-width">
-        <div class="featured-projects__main">
+        <div class="featured-projects__main breakout">
           <header>
             <h2>
               <span>My Portfolio</span>
-              Featured Projects
+              Selected work that shipped
             </h2>
             <p>
-              As an experienced UI/UX Engineer, I have embraced every project as
-              an opportunity to transform an idea into a visually compelling and
-              user-friendly digital experience.
+              A closer look at digital products where interface design,
+              front-end architecture, and business constraints had to land
+              together.
             </p>
           </header>
-          {featuredProjects.map((project, i) => (
-            <article key={project.id}>
-              <a href={`/projects/${project.slug}`} class="project-card-link">
+          {featuredProjects.map((project) => (
+            <article key={project.id} class="project-showcase-card">
+              <a
+                href={`/projects/${project.slug}`}
+                class="project-card-link"
+                aria-label={`View ${project.title} project`}
+              >
                 <figure>
-                  <div>
+                  <div class="project-card-media">
                     <img
                       src={project.cover}
                       alt={`${project.title} project image`}
                     />
-                    <span class="view-project-badge" aria-hidden="true">View Project</span>
+                    <img
+                      class="project-card-logo"
+                      src={project.logo}
+                      alt=""
+                      loading="lazy"
+                    />
+                    <span class="view-project-badge" aria-hidden="true">
+                      View Case Study
+                    </span>
                   </div>
                   <figcaption>
-                    <span class="project-number" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                     <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                    <TagList tags={project.tags} />
                   </figcaption>
                 </figure>
               </a>
-              <p>{project.description}</p>
-              <TagList tags={project.tags} />
             </article>
           ))}
         </div>
@@ -173,6 +184,10 @@ export default define.page(function Home() {
             <span>Work Experience</span>
             Companies I have worked with
           </h2>
+          <p>
+            Product teams, agencies, and engineering groups where I have
+            designed interfaces, built systems, and shipped production software.
+          </p>
         </header>
         <ul class="experience-list">
           {EXPERIENCES.map((exp) => (
