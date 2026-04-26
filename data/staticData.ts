@@ -185,7 +185,7 @@ export const EXPERIENCES: Experience[] = [
     id: 8,
     title: "UI/UX Designer",
     company: "Kolano Design",
-    logo: "/kolano-logo.svg",
+    logo: "/kolano-logo.png",
     duration: "2013 – 2014",
   },
 ];
