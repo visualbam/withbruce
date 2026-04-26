@@ -133,22 +133,20 @@ export default define.page(function Home() {
             Companies I have worked with
           </h2>
         </header>
-        <article>
+        <ul class="experience-list">
           {EXPERIENCES.map((exp) => (
-            <figure key={exp.id}>
-              <img src={exp.logo} alt={`${exp.company} Logo`} loading="lazy" />
-              <hr />
-              <figcaption>
-                <ul>
-                  <li>{exp.title}</li>
-                  <li>
-                    {exp.company} – {exp.duration}
-                  </li>
-                </ul>
-              </figcaption>
-            </figure>
+            <li class="experience-item" key={exp.id}>
+              <div class="experience-item__logo">
+                <img src={exp.logo} alt={`${exp.company} logo`} loading="lazy" />
+              </div>
+              <div class="experience-item__meta">
+                <p class="experience-item__title">{exp.title}</p>
+                <p class="experience-item__company">{exp.company}</p>
+              </div>
+              <span class="experience-item__duration">{exp.duration}</span>
+            </li>
           ))}
-        </article>
+        </ul>
       </section>
     </>
   );
