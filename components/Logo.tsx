@@ -6,14 +6,14 @@ export function Logo() {
       <img
         class="logo logo--dark"
         src="/with-bruce-logo-dark.svg"
-        alt="With Bruce Logo"
+        alt="With Bruce"
         width={205}
         height={40}
       />
       <img
         class="logo logo--light"
         src="/with-bruce-logo-light.svg"
-        alt="With Bruce Logo"
+        alt=""
         width={205}
         height={40}
       />

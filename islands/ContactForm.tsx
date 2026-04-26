@@ -49,19 +49,25 @@ export default function ContactForm() {
   return (
     <>
       <header>
-        <h2>
+        <h2 id="contact-form-heading">
           <span>Hello there</span>
           Do you have a project you would like to discuss?
         </h2>
+        <p class="required-note"><span aria-hidden="true">* </span>Required fields</p>
       </header>
 
-      <form onSubmit={handleSubmit}>
+      <div aria-live="polite" aria-atomic="true" class="sr-only">
+        {submitting.value ? "Sending your message…" : ""}
+      </div>
+
+      <form onSubmit={handleSubmit} aria-labelledby="contact-form-heading">
         <div class="form-field">
-          <label for="name">Name</label>
+          <label for="name">Name <span class="required-mark" aria-hidden="true">*</span></label>
           <input
             id="name"
             type="text"
             required
+            aria-required="true"
             autocomplete="name"
             placeholder="Your full name"
             value={name.value}
@@ -69,11 +75,12 @@ export default function ContactForm() {
           />
         </div>
         <div class="form-field">
-          <label for="email">Email Address</label>
+          <label for="email">Email Address <span class="required-mark" aria-hidden="true">*</span></label>
           <input
             id="email"
             type="email"
             required
+            aria-required="true"
             autocomplete="email"
             placeholder="your@email.com"
             value={email.value}
@@ -82,10 +89,11 @@ export default function ContactForm() {
           />
         </div>
         <div class="form-field">
-          <label for="message">Tell me about your project</label>
+          <label for="message">Tell me about your project <span class="required-mark" aria-hidden="true">*</span></label>
           <textarea
             id="message"
             required
+            aria-required="true"
             placeholder="Describe your project, goals, or questions..."
             value={message.value}
             onInput={(e) =>

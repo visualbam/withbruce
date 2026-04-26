@@ -16,7 +16,7 @@ input, button, textarea, select {
   outline: inherit;
 }
 p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
-h1:focus { outline: none !important; }
+h1:focus-visible { outline: none; }
 
 /* ==========================================================================
    CSS Custom Properties
@@ -258,7 +258,7 @@ footer hr {
 html.light footer hr { border-color: var(--clr-slate-200); }
 html.dark  footer hr { border-color: var(--clr-slate-800); }
 
-html.light footer small { color: var(--clr-slate-400); }
+html.light footer small { color: var(--clr-slate-500); }
 html.dark  footer small { color: var(--clr-slate-500); }
 
 /* ==========================================================================
@@ -465,14 +465,17 @@ html.dark  .services { background: var(--clr-slate-950); color: var(--clr-slate-
   gap: 0.5rem;
 }
 
-.services article {
+.services-grid {
   display: grid;
   gap: 0.875rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 @media (min-width: 551px) {
-  .services article {
+  .services-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, auto));
   }
 }
@@ -593,13 +596,13 @@ html.dark  .featured-projects { background: var(--clr-slate-900); color: var(--c
 
 .featured-projects figure:hover { cursor: pointer; }
 
-.featured-projects figure:hover button {
+.featured-projects figure:hover .view-project-badge {
   border-color: rgba(248,113,113,0.8);
   color: var(--clr-primary-300);
   background: rgba(0,0,0,0.75);
 }
 
-.featured-projects button {
+.featured-projects .view-project-badge {
   position: absolute;
   bottom: 1.25rem;
   left: 0;
@@ -741,7 +744,7 @@ html.dark  .experience-item__company { color: var(--clr-slate-500); }
   white-space: nowrap;
 }
 
-html.light .experience-item__duration { color: var(--clr-slate-400); }
+html.light .experience-item__duration { color: var(--clr-slate-500); }
 html.dark  .experience-item__duration { color: var(--clr-slate-500); }
 
 /* ==========================================================================
@@ -956,7 +959,7 @@ html.dark  .project-nav-link .preview-image { border-color: var(--clr-slate-700)
   text-transform: uppercase;
 }
 
-html.light .project-nav-link span { color: var(--clr-slate-400); }
+html.light .project-nav-link span { color: var(--clr-slate-500); }
 html.dark  .project-nav-link span { color: var(--clr-slate-500); }
 
 .project-nav-link h5 {
@@ -1064,7 +1067,6 @@ html.dark  .contact .form-field label { color: var(--clr-slate-300); }
   padding: 0.875rem 1rem;
   display: block;
   width: 100%;
-  outline: none;
   transition: border-color var(--transition), box-shadow var(--transition);
 }
 
@@ -1291,10 +1293,11 @@ html.dark  .tag:hover {
 /* ==========================================================================
    Focus Styles
    ========================================================================== */
-.contact .form-field input:focus,
-.contact .form-field textarea:focus {
+.contact .form-field input:focus-visible,
+.contact .form-field textarea:focus-visible {
   border-color: var(--clr-primary-400);
-  box-shadow: 0 0 0 3px rgba(239,68,68,0.1);
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.18);
+  outline: none;
 }
 
 .button:focus-visible {
@@ -1320,6 +1323,39 @@ html.dark  .tag:hover {
   vertical-align: middle;
   margin-right: 0.4em;
 }
+
+/* ==========================================================================
+   Screen-reader only utility
+   ========================================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Required field indicators
+   ========================================================================== */
+.required-mark {
+  color: var(--clr-primary-600);
+  margin-left: 0.2em;
+}
+
+html.dark .required-mark { color: var(--clr-primary-400); }
+
+.required-note {
+  font-size: var(--text-xs);
+  margin-top: -0.5rem;
+}
+
+html.light .required-note { color: var(--clr-slate-500); }
+html.dark  .required-note { color: var(--clr-slate-400); }
 
 /* ==========================================================================
    Reduced motion
