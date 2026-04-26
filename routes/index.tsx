@@ -59,6 +59,20 @@ export default define.page(function Home() {
             </figcaption>
           </figure>
         </article>
+        <dl class="hero-stats" aria-label="Quick stats">
+          <div class="hero-stat">
+            <dt>Years of Experience</dt>
+            <dd>13+</dd>
+          </div>
+          <div class="hero-stat">
+            <dt>Companies</dt>
+            <dd>8</dd>
+          </div>
+          <div class="hero-stat">
+            <dt>Projects Delivered</dt>
+            <dd>50+</dd>
+          </div>
+        </dl>
       </section>
 
       {/* Services */}
@@ -104,7 +118,7 @@ export default define.page(function Home() {
               user-friendly digital experience.
             </p>
           </header>
-          {featuredProjects.map((project) => (
+          {featuredProjects.map((project, i) => (
             <article key={project.id}>
               <a href={`/projects/${project.slug}`} class="project-card-link">
                 <figure>
@@ -116,6 +130,7 @@ export default define.page(function Home() {
                     <span class="view-project-badge" aria-hidden="true">View Project</span>
                   </div>
                   <figcaption>
+                    <span class="project-number" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                     <h3>{project.title}</h3>
                   </figcaption>
                 </figure>

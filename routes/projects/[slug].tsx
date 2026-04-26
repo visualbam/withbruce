@@ -50,9 +50,22 @@ export default define.page(function ProjectDetail(ctx) {
       {/* Detail header */}
       <section class="project-detail">
         <header>
-          <h2>{project.title}</h2>
+          <h2>
+            <span>Case Study</span>
+            {project.title}
+          </h2>
           <p>{project.description}</p>
           <TagList tags={project.tags} />
+          <dl class="project-meta-stats" aria-label="Project details">
+            <div>
+              <dt>Technologies</dt>
+              <dd>{project.tags.length}</dd>
+            </div>
+            <div>
+              <dt>Screenshots</dt>
+              <dd>{project.images.length}</dd>
+            </div>
+          </dl>
         </header>
       </section>
 
