@@ -42,7 +42,7 @@ export default define.page(function ProjectDetail(ctx) {
       />
 
       {/* Mast */}
-      <section class="project-mast full-width">
+      <section class="project-mast full-width" aria-label={`${project.title} project header`}>
         <img src={project.logo} alt={`${project.title} Logo`} />
         <img class="full-width" src={project.mast} alt={`${project.title} mast`} />
       </section>
@@ -50,17 +50,30 @@ export default define.page(function ProjectDetail(ctx) {
       {/* Detail header */}
       <section class="project-detail">
         <header>
-          <h2>{project.title}</h2>
+          <h2>
+            <span>Case Study</span>
+            {project.title}
+          </h2>
           <p>{project.description}</p>
           <TagList tags={project.tags} />
+          <dl class="project-meta-stats" aria-label="Project details">
+            <div>
+              <dt>Technologies</dt>
+              <dd>{project.tags.length}</dd>
+            </div>
+            <div>
+              <dt>Screenshots</dt>
+              <dd>{project.images.length}</dd>
+            </div>
+          </dl>
         </header>
       </section>
 
       {/* Screenshot grid */}
-      <section class="project-shots">
-        {project.images.map((img) => (
+      <section class="project-shots" aria-label="Project screenshots">
+        {project.images.map((img, i) => (
           <figure key={img.id}>
-            <img src={img.filePath} alt={`${project.title} screenshot`} loading="lazy" />
+            <img src={img.filePath} alt={`${project.title} screenshot ${i + 1} of ${project.images.length}`} loading="lazy" />
           </figure>
         ))}
       </section>

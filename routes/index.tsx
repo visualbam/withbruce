@@ -48,17 +48,31 @@ export default define.page(function Home() {
               src="/bruce-header.svg"
               alt="Promotional hero vector image of Bruce McElroy with various development frameworks."
             />
-            <img src="/vue-icon.svg" alt="Vue.js Icon" />
-            <img src="/js-icon.svg" alt="Javascript Icon" />
-            <img src="/net-icon.svg" alt=".NET Icon" />
-            <img src="/angular-icon.svg" alt="Angular Icon" />
-            <img src="/blazor-icon.svg" alt="Blazor Icon" />
-            <img src="/tailwind-icon.svg" alt="Tailwind CSS Icon" />
+            <img src="/vue-icon.svg" alt="" />
+            <img src="/js-icon.svg" alt="" />
+            <img src="/net-icon.svg" alt="" />
+            <img src="/angular-icon.svg" alt="" />
+            <img src="/blazor-icon.svg" alt="" />
+            <img src="/tailwind-icon.svg" alt="" />
             <figcaption>
               Collection of images depicting different development frameworks.
             </figcaption>
           </figure>
         </article>
+        <dl class="hero-stats" aria-label="Quick stats">
+          <div class="hero-stat">
+            <dt>Years of Experience</dt>
+            <dd>13+</dd>
+          </div>
+          <div class="hero-stat">
+            <dt>Companies</dt>
+            <dd>8</dd>
+          </div>
+          <div class="hero-stat">
+            <dt>Projects Delivered</dt>
+            <dd>50+</dd>
+          </div>
+        </dl>
       </section>
 
       {/* Services */}
@@ -74,18 +88,20 @@ export default define.page(function Home() {
             presence that truly reflects your vision.
           </p>
         </header>
-        <article>
+        <ul class="services-grid">
           {SERVICES.map((service) => (
-            <figure key={service.name}>
-              <img
-                src={service.imagePath}
-                alt={service.altText}
-                loading="lazy"
-              />
-              <figcaption>{service.name}</figcaption>
-            </figure>
+            <li key={service.name}>
+              <figure>
+                <img
+                  src={service.imagePath}
+                  alt={service.altText}
+                  loading="lazy"
+                />
+                <figcaption>{service.name}</figcaption>
+              </figure>
+            </li>
           ))}
-        </article>
+        </ul>
       </section>
 
       {/* Featured Projects */}
@@ -102,7 +118,7 @@ export default define.page(function Home() {
               user-friendly digital experience.
             </p>
           </header>
-          {featuredProjects.map((project) => (
+          {featuredProjects.map((project, i) => (
             <article key={project.id}>
               <a href={`/projects/${project.slug}`} class="project-card-link">
                 <figure>
@@ -111,9 +127,10 @@ export default define.page(function Home() {
                       src={project.cover}
                       alt={`${project.title} project image`}
                     />
-                    <button type="button">View Project</button>
+                    <span class="view-project-badge" aria-hidden="true">View Project</span>
                   </div>
                   <figcaption>
+                    <span class="project-number" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                     <h3>{project.title}</h3>
                   </figcaption>
                 </figure>

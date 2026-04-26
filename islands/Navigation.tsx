@@ -3,9 +3,12 @@ import { signal } from "@preact/signals";
 
 const isDark = signal(false);
 const scrollProgress = signal(0);
+const currentPath = signal("");
 
 export default function Navigation() {
   useEffect(() => {
+    currentPath.value = window.location.pathname;
+
     // Restore theme from localStorage (anti-FOUC companion)
     const stored = localStorage.getItem("theme");
     const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
@@ -62,18 +65,18 @@ export default function Navigation() {
           />
         </a>
         <div>
-          <a href="/">
+          <a href="/" aria-current={currentPath.value === "/" ? "page" : undefined}>
             <img
               class="logo logo--dark nav-logo"
               src="/with-bruce-logo-dark.svg"
-              alt="With Bruce Logo"
+              alt="With Bruce"
               width={205}
               height={40}
             />
             <img
               class="logo logo--light nav-logo"
               src="/with-bruce-logo-light.svg"
-              alt="With Bruce Logo"
+              alt=""
               width={205}
               height={40}
             />
