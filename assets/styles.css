@@ -121,6 +121,11 @@ small { font-size: var(--text-sm); }
   50%       { transform: translateY(10px); }
 }
 
+@keyframes hero-orbit-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(12px, -8px, 0); }
+}
+
 /* ==========================================================================
    Global Layout
    ========================================================================== */
@@ -341,15 +346,52 @@ html.dark  .main-navigation .progress-bar { background: transparent; }
    ========================================================================== */
 .hero {
   background:
+    linear-gradient(135deg, rgba(15,8,42,0.96) 0%, rgba(21,12,61,0.94) 45%, rgba(123,13,73,0.88) 100%),
     url("/hero-background.svg"),
     linear-gradient(135deg, rgba(15,8,42,1) 0%, rgba(21,12,61,1) 35%, rgba(123,13,73,1) 100%);
   height: min-content;
   padding: 4rem 0 6rem;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover, cover, cover;
   position: relative;
   z-index: 2;
+  isolation: isolate;
+  overflow: hidden;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3.5rem), 0 100%);
+}
+
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero::before {
+  z-index: -2;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.10) 0 1px, transparent 1.6px);
+  background-size: 28px 28px;
+  -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.34) 36%, rgba(0,0,0,0.88) 68%, transparent 100%);
+  mask-image: linear-gradient(90deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.34) 36%, rgba(0,0,0,0.88) 68%, transparent 100%);
+  opacity: 0.62;
+}
+
+.hero::after {
+  z-index: -1;
+  background:
+    radial-gradient(circle at 66% 4%, transparent 0 96px, rgba(255,255,255,0.13) 97px 99px, transparent 100px),
+    radial-gradient(circle at 91% 46%, transparent 0 174px, rgba(248,113,113,0.18) 175px 177px, transparent 178px),
+    radial-gradient(circle at 77% 78%, transparent 0 118px, rgba(203,213,225,0.11) 119px 121px, transparent 122px),
+    radial-gradient(circle at 73% 42%, rgba(255,255,255,0.028) 0 82px, transparent 84px),
+    radial-gradient(circle at 88% 62%, rgba(248,113,113,0.14) 0 62px, transparent 64px),
+    radial-gradient(circle at 12% 72%, rgba(255,255,255,0.055) 0 68px, transparent 70px),
+    radial-gradient(ellipse at 25% 82%, rgba(248,113,113,0.09) 0%, transparent 34%),
+    linear-gradient(to bottom, rgba(2,6,23,0) 55%, rgba(2,6,23,0.24) 86%, rgba(2,6,23,0.38) 100%),
+    radial-gradient(ellipse at 76% 34%, rgba(255,255,255,0.06) 0%, transparent 42%);
+  opacity: 0.88;
+  animation: hero-orbit-drift 16s ease-in-out infinite;
 }
 
 @media (min-width: 1100px) {
@@ -361,6 +403,8 @@ html.dark  .main-navigation .progress-bar { background: transparent; }
   display: grid;
   column-gap: 3rem;
   row-gap: 1.5rem;
+  position: relative;
+  z-index: 1;
   grid-template-areas:
     "bruce-vector"
     "name"
@@ -382,7 +426,7 @@ html.dark  .main-navigation .progress-bar { background: transparent; }
 
 .hero .hero-name {
   grid-area: name;
-  color: var(--clr-primary-400);
+  color: var(--clr-primary-300);
   font-family: 'Archivo', sans-serif;
   font-size: var(--text-xs);
   font-weight: 700;
@@ -405,10 +449,11 @@ html.dark  .main-navigation .progress-bar { background: transparent; }
   font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
   letter-spacing: -0.03em;
   line-height: 1.05;
-  background: linear-gradient(135deg, #fff 20%, #fca5a5 65%, #e11d48 100%);
+  background: linear-gradient(135deg, #fff 18%, #fee2e2 54%, #f87171 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  filter: drop-shadow(0 18px 38px rgba(2,6,23,0.36));
 }
 
 .hero p {
@@ -426,6 +471,20 @@ html.dark  .main-navigation .progress-bar { background: transparent; }
   justify-self: center;
   align-self: center;
   position: relative;
+  filter: drop-shadow(0 22px 46px rgba(2,6,23,0.34));
+}
+
+.hero figure::before {
+  content: '';
+  position: absolute;
+  inset: 7% 5% 2%;
+  z-index: -1;
+  border-radius: 46% 54% 52% 48%;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.018)),
+    radial-gradient(ellipse at 52% 42%, rgba(248,113,113,0.15), transparent 66%);
+  border: 1px solid rgba(255,255,255,0.11);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .hero figure figcaption { display: none; }
@@ -451,9 +510,21 @@ html.dark  .main-navigation .progress-bar { background: transparent; }
   display: flex;
   gap: 0;
   list-style: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding-top: 2rem;
   margin-top: 2rem;
+}
+
+.hero-stats::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 9rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(248,113,113,0.9), transparent);
 }
 
 .hero-stat {
@@ -474,15 +545,16 @@ html.dark  .main-navigation .progress-bar { background: transparent; }
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(203, 213, 225, 0.5);
+  color: rgba(203, 213, 225, 0.58);
 }
 
 .hero-stat dd {
   font-family: 'Archivo', sans-serif;
   font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
   font-weight: 800;
-  color: var(--clr-primary-400);
+  color: var(--clr-primary-300);
   line-height: 1;
+  text-shadow: 0 8px 22px rgba(185,28,28,0.28);
 }
 
 /* ==========================================================================
