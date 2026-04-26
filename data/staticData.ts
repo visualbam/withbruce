@@ -49,26 +49,22 @@ function thumbs(prefix: string, nums: number[]): ProjectImage[] {
 
 export const PROJECTS: Project[] = [
   {
-    id: 1,
-    title: "Pampered Chef",
-    slug: "pampered-chef",
+    id: 4,
+    title: "FastEndpoints",
+    slug: "fastendpoints",
     description:
-      "A modern platform redesign for Pampered Chef, elevating the digital experience for their independent consultants and customers with a fresh, contemporary design language and intuitive navigation.",
+      "Documentation site and landing page for FastEndpoints, a high-performance .NET library for building REST APIs — designed to be developer-friendly and visually sharp.",
     isFeatured: true,
-    cover: "/pampered-chef-cover.webp",
-    logo: "/pampered-chef-logo-light.svg",
-    mast: "/pampered-chef-mast.webp",
+    cover: "/fastendpoints-project-cover.webp",
+    logo: "/fast-endpoints-logo.svg",
+    mast: "/fast-endpoints-mast.webp",
     tags: [
-      { id: 1, name: "Angular" },
+      { id: 6, name: ".NET" },
       { id: 2, name: "Design" },
-      { id: 3, name: "Responsive Design" },
-      { id: 4, name: "UI/UX" },
+      { id: 8, name: "Software Engineering" },
       { id: 5, name: "Web Development" },
     ],
-    images: thumbs(
-      "pampered-chef",
-      [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
-    ),
+    images: thumbs("fast-endpoints", [1, 2, 3, 4, 5, 6]),
   },
   {
     id: 2,
@@ -93,6 +89,28 @@ export const PROJECTS: Project[] = [
     ),
   },
   {
+    id: 1,
+    title: "Pampered Chef",
+    slug: "pampered-chef",
+    description:
+      "A modern platform redesign for Pampered Chef, elevating the digital experience for their independent consultants and customers with a fresh, contemporary design language and intuitive navigation.",
+    isFeatured: true,
+    cover: "/pampered-chef-cover.webp",
+    logo: "/pampered-chef-logo-light.svg",
+    mast: "/pampered-chef-mast.webp",
+    tags: [
+      { id: 1, name: "Angular" },
+      { id: 2, name: "Design" },
+      { id: 3, name: "Responsive Design" },
+      { id: 4, name: "UI/UX" },
+      { id: 5, name: "Web Development" },
+    ],
+    images: thumbs(
+      "pampered-chef",
+      [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    ),
+  },
+  {
     id: 3,
     title: "Vodsearch",
     slug: "vodsearch",
@@ -112,24 +130,6 @@ export const PROJECTS: Project[] = [
       "vodsearch",
       [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     ),
-  },
-  {
-    id: 4,
-    title: "FastEndpoints",
-    slug: "fastendpoints",
-    description:
-      "Documentation site and landing page for FastEndpoints, a high-performance .NET library for building REST APIs — designed to be developer-friendly and visually sharp.",
-    isFeatured: true,
-    cover: "/fastendpoints-project-cover.webp",
-    logo: "/fast-endpoints-logo.svg",
-    mast: "/fast-endpoints-mast.webp",
-    tags: [
-      { id: 6, name: ".NET" },
-      { id: 2, name: "Design" },
-      { id: 8, name: "Software Engineering" },
-      { id: 5, name: "Web Development" },
-    ],
-    images: thumbs("fast-endpoints", [1, 2, 3, 4, 5, 6]),
   },
 ];
 
