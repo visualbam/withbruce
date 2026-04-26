@@ -696,6 +696,22 @@ html.dark  .featured-projects { background: var(--clr-slate-900); color: var(--c
 .featured-projects figcaption h3 {
   font-size: var(--text-xl);
   letter-spacing: -0.02em;
+  transition: color var(--transition);
+}
+.featured-projects figcaption h3::after {
+  content: '→';
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.85em;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+html.light .project-card-link:hover figcaption h3 { color: var(--clr-primary-700); }
+html.dark  .project-card-link:hover figcaption h3 { color: var(--clr-primary-400); }
+.project-card-link:hover figcaption h3::after {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .project-number {
