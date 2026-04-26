@@ -181,6 +181,13 @@ export const EXPERIENCES: Experience[] = [
     logo: "/ppg-logo.svg",
     duration: "Aug 2012 – Nov 2013",
   },
+  {
+    id: 8,
+    title: "UI/UX Designer",
+    company: "Kolano Design",
+    logo: "/kolano-logo.svg",
+    duration: "2013 – 2014",
+  },
 ];
 
 export const SERVICES: OfferedService[] = [
