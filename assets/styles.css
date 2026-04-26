@@ -551,7 +551,7 @@ html.dark  .services::before { background: var(--clr-slate-950); }
   justify-content: center;
   border-radius: 12px;
   gap: 0.875rem;
-  padding: 2rem 1.25rem;
+  padding: 2rem 1.25rem 1.5rem;
   text-align: center;
   border: 1px solid transparent;
   transition: all var(--transition);
@@ -581,8 +581,10 @@ html.dark  .services figure:hover {
 }
 
 .services figure figcaption {
-  font-size: var(--text-sm);
-  font-weight: 600;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .services p { max-width: 64ch; }
