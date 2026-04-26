@@ -1,6 +1,16 @@
 import { define } from "../utils.ts";
 import { EXPERIENCES, PROJECTS, SERVICES } from "../data/staticData.ts";
 import { TagList } from "../components/TagList.tsx";
+import type { ComponentType } from "preact";
+
+type IconifyIconProps = {
+  "aria-hidden"?: "true" | "false";
+  icon: string;
+};
+
+const IconifyIcon = "iconify-icon" as unknown as ComponentType<
+  IconifyIconProps
+>;
 
 export default define.page(function Home() {
   const featuredProjects = PROJECTS.filter((p) => p.isFeatured);
@@ -31,8 +41,10 @@ export default define.page(function Home() {
         <article>
           <p class="hero-name">
             Bruce McElroy{" "}
-            {/* deno-lint-ignore no-explicit-any */}
-            <iconify-icon {...({} as any)} icon="ph:lightning-duotone" aria-hidden="true" />
+            <IconifyIcon
+              icon="ph:lightning-duotone"
+              aria-hidden="true"
+            />
           </p>
           <h1>UI/UX Designer &amp; Software Developer Based in Pittsburgh</h1>
           <p>
@@ -80,7 +92,7 @@ export default define.page(function Home() {
         <header>
           <h2>
             <span>How I can help you</span>
-            Discover versatile digital solutions
+            Design, build, and refine digital products
           </h2>
           <p>
             I fuse design, development, and strategy to craft unique digital
@@ -90,14 +102,26 @@ export default define.page(function Home() {
         </header>
         <ul class="services-grid">
           {SERVICES.map((service) => (
-            <li key={service.name}>
+            <li
+              key={service.name}
+              class={`service-card${
+                service.isFeatured ? " service-card--featured" : ""
+              }`}
+            >
               <figure>
-                <img
-                  src={service.imagePath}
-                  alt={service.altText}
-                  loading="lazy"
-                />
-                <figcaption>{service.name}</figcaption>
+                <div class="service-card__icon">
+                  <img
+                    src={service.imagePath}
+                    alt={service.altText}
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption>
+                  <span class="service-card__title">{service.name}</span>
+                  <span class="service-card__description">
+                    {service.description}
+                  </span>
+                </figcaption>
               </figure>
             </li>
           ))}

@@ -36,6 +36,8 @@ export interface OfferedService {
   name: string;
   imagePath: string;
   altText: string;
+  description: string;
+  isFeatured?: boolean;
 }
 
 function thumbs(prefix: string, nums: number[]): ProjectImage[] {
@@ -192,44 +194,62 @@ export const EXPERIENCES: Experience[] = [
 
 export const SERVICES: OfferedService[] = [
   {
-    name: "Bug Squashing",
-    imagePath: "/service-icon-bug-squashing.svg",
-    altText: "Icon representing bug fixing service",
-  },
-  {
-    name: "Design Insights",
-    imagePath: "/service-icon-design-insights.svg",
-    altText: "Icon representing design insights service",
-  },
-  {
-    name: "Mobile Strategy",
-    imagePath: "/service-icon-mobile-strategy.svg",
-    altText: "Icon representing mobile strategy service",
-  },
-  {
-    name: "Photo Editing",
-    imagePath: "/service-icon-photo-editing.svg",
-    altText: "Icon representing photo editing service",
-  },
-  {
-    name: "Responsive Design",
-    imagePath: "/service-icon-responsive-design.svg",
-    altText: "Icon representing responsive design service",
+    name: "UI/UX",
+    imagePath: "/service-icon-uiux.svg",
+    altText: "Icon representing UI/UX service",
+    description:
+      "Design accessible product flows that make complex interactions feel clear.",
+    isFeatured: true,
   },
   {
     name: "Software Engineering",
     imagePath: "/service-icon-software-engineering.svg",
     altText: "Icon representing software engineering service",
-  },
-  {
-    name: "UI/UX",
-    imagePath: "/service-icon-uiux.svg",
-    altText: "Icon representing UI/UX service",
+    description:
+      "Build maintainable features across front end, APIs, and product systems.",
+    isFeatured: true,
   },
   {
     name: "Web Development",
     imagePath: "/service-icon-web-development.svg",
     altText: "Icon representing web development service",
+    description:
+      "Create fast, resilient websites tuned for real users and business goals.",
+  },
+  {
+    name: "Bug Squashing",
+    imagePath: "/service-icon-bug-squashing.svg",
+    altText: "Icon representing bug fixing service",
+    description:
+      "Trace defects, stabilize releases, and keep critical product paths moving.",
+  },
+  {
+    name: "Design Insights",
+    imagePath: "/service-icon-design-insights.svg",
+    altText: "Icon representing design insights service",
+    description:
+      "Turn audits, analytics, and user signals into sharper interface decisions.",
+  },
+  {
+    name: "Mobile Strategy",
+    imagePath: "/service-icon-mobile-strategy.svg",
+    altText: "Icon representing mobile strategy service",
+    description:
+      "Plan touch-first experiences that scale cleanly across screens and contexts.",
+  },
+  {
+    name: "Photo Editing",
+    imagePath: "/service-icon-photo-editing.svg",
+    altText: "Icon representing photo editing service",
+    description:
+      "Polish campaign visuals, product imagery, and branded digital assets.",
+  },
+  {
+    name: "Responsive Design",
+    imagePath: "/service-icon-responsive-design.svg",
+    altText: "Icon representing responsive design service",
+    description:
+      "Refine layouts so content, navigation, and interactions adapt naturally.",
   },
 ];
 
