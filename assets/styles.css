@@ -337,8 +337,8 @@ html.dark  .main-navigation .progress-bar { background: transparent; }
    ========================================================================== */
 .hero {
   background:
-    url("/hero-background.png"),
-    linear-gradient(135deg, rgba(21,12,61,1) 0%, rgba(121,14,74,1) 100%);
+    url("/hero-background.svg"),
+    linear-gradient(135deg, rgba(15,8,42,1) 0%, rgba(21,12,61,1) 35%, rgba(123,13,73,1) 100%);
   height: min-content;
   padding: 4rem 0;
   background-repeat: no-repeat;

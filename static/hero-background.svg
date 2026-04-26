@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" width="1440" height="600">
+  <defs>
+    <pattern id="dot-grid" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="14" cy="14" r="1.1" fill="rgba(255,255,255,0.09)"/>
+    </pattern>
+
+    <radialGradient id="glow-right" cx="72%" cy="42%" r="38%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="rgba(190,24,93,0.28)"/>
+      <stop offset="100%" stop-color="rgba(190,24,93,0)"/>
+    </radialGradient>
+    <radialGradient id="glow-left" cx="12%" cy="65%" r="32%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="rgba(88,28,135,0.22)"/>
+      <stop offset="100%" stop-color="rgba(88,28,135,0)"/>
+    </radialGradient>
+    <radialGradient id="glow-center" cx="48%" cy="20%" r="25%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="rgba(123,13,73,0.18)"/>
+      <stop offset="100%" stop-color="rgba(123,13,73,0)"/>
+    </radialGradient>
+
+    <filter id="node-glow" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Dot grid -->
+  <rect width="100%" height="100%" fill="url(#dot-grid)"/>
+
+  <!-- Radial depth glows -->
+  <rect width="100%" height="100%" fill="url(#glow-right)"/>
+  <rect width="100%" height="100%" fill="url(#glow-left)"/>
+  <rect width="100%" height="100%" fill="url(#glow-center)"/>
+
+  <!-- Flowing organic curves — creativity / motion -->
+  <g fill="none" stroke="rgba(255,255,255,0.055)" stroke-width="1.2">
+    <path d="M-80,520 C160,420 380,220 680,310 S1100,520 1560,220"/>
+    <path d="M-80,470 C200,370 440,170 740,260 S1180,470 1640,170"/>
+    <path d="M-80,570 C120,470 340,270 640,360 S1060,570 1520,270"/>
+  </g>
+
+  <!-- Structural diagonals — code / grid thinking -->
+  <g fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1.5">
+    <line x1="280" y1="0" x2="640" y2="600"/>
+    <line x1="720" y1="0" x2="1080" y2="600"/>
+    <line x1="1160" y1="0" x2="1520" y2="600"/>
+  </g>
+
+  <!-- Accent nodes — on-grid intersections -->
+  <g filter="url(#node-glow)">
+    <circle cx="1092" cy="112" r="10" fill="rgba(248,113,113,0.12)"/>
+    <circle cx="1092" cy="112" r="2.5" fill="rgba(248,113,113,0.45)"/>
+    <circle cx="364" cy="252" r="8" fill="rgba(248,113,113,0.1)"/>
+    <circle cx="364" cy="252" r="2" fill="rgba(248,113,113,0.38)"/>
+    <circle cx="1288" cy="364" r="9" fill="rgba(248,113,113,0.1)"/>
+    <circle cx="1288" cy="364" r="2.5" fill="rgba(248,113,113,0.4)"/>
+    <circle cx="196" cy="504" r="7" fill="rgba(248,113,113,0.08)"/>
+    <circle cx="196" cy="504" r="1.8" fill="rgba(248,113,113,0.32)"/>
+    <circle cx="924" cy="84" r="7" fill="rgba(248,113,113,0.08)"/>
+    <circle cx="924" cy="84" r="1.8" fill="rgba(248,113,113,0.3)"/>
+  </g>
+</svg>
