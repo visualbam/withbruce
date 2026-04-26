@@ -21,8 +21,7 @@ export default function Navigation() {
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrolled = window.scrollY;
-          const total =
-            document.documentElement.scrollHeight -
+          const total = document.documentElement.scrollHeight -
             document.documentElement.clientHeight;
           scrollProgress.value = total > 0 ? (scrolled / total) * 100 : 0;
           ticking = false;
@@ -65,7 +64,10 @@ export default function Navigation() {
           />
         </a>
         <div>
-          <a href="/" aria-current={currentPath.value === "/" ? "page" : undefined}>
+          <a
+            href="/"
+            aria-current={currentPath.value === "/" ? "page" : undefined}
+          >
             <img
               class="logo logo--dark nav-logo"
               src="/with-bruce-logo-dark.svg"

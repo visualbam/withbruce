@@ -8,9 +8,7 @@ export function TagList({ tags }: Props) {
   const sorted = [...tags].sort((a, b) => a.name.localeCompare(b.name));
   return (
     <div class="tags">
-      {sorted.map((tag) => (
-        <span key={tag.id} class="tag">{tag.name}</span>
-      ))}
+      {sorted.map((tag) => <span key={tag.id} class="tag">{tag.name}</span>)}
     </div>
   );
 }

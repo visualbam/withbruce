@@ -9,8 +9,7 @@ export function Footer() {
       <hr />
       <small>
         © {new Date().getFullYear()}{" "}
-        <a href="/" class="hover:underline">WithBruce™</a>. All Rights
-        Reserved.
+        <a href="/" class="hover:underline">WithBruce™</a>. All Rights Reserved.
       </small>
     </footer>
   );

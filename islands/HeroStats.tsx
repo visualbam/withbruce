@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "preact/hooks";
 
 const STATS = [
   { value: 13, suffix: "+", label: "Years of Experience" },
-  { value: 8,  suffix: "",  label: "Companies" },
+  { value: 8, suffix: "", label: "Companies" },
   { value: 50, suffix: "+", label: "Projects Delivered" },
 ];
 

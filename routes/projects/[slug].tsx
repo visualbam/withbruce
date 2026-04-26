@@ -42,9 +42,16 @@ export default define.page(function ProjectDetail(ctx) {
       />
 
       {/* Mast */}
-      <section class="project-mast full-width" aria-label={`${project.title} project header`}>
+      <section
+        class="project-mast full-width"
+        aria-label={`${project.title} project header`}
+      >
         <img src={project.logo} alt={`${project.title} Logo`} />
-        <img class="full-width" src={project.mast} alt={`${project.title} mast`} />
+        <img
+          class="full-width"
+          src={project.mast}
+          alt={`${project.title} mast`}
+        />
       </section>
 
       {/* Detail header */}
@@ -73,7 +80,13 @@ export default define.page(function ProjectDetail(ctx) {
       <section class="project-shots" aria-label="Project screenshots">
         {project.images.map((img, i) => (
           <figure key={img.id}>
-            <img src={img.filePath} alt={`${project.title} screenshot ${i + 1} of ${project.images.length}`} loading="lazy" />
+            <img
+              src={img.filePath}
+              alt={`${project.title} screenshot ${
+                i + 1
+              } of ${project.images.length}`}
+              loading="lazy"
+            />
           </figure>
         ))}
       </section>
@@ -100,7 +113,10 @@ export default define.page(function ProjectDetail(ctx) {
           </a>
         )}
         {next && (
-          <a href={`/projects/${next.slug}`} class="project-nav-link project-nav-link--next">
+          <a
+            href={`/projects/${next.slug}`}
+            class="project-nav-link project-nav-link--next"
+          >
             <div
               class="preview-image"
               style={{ backgroundImage: `url('${next.cover}')` }}

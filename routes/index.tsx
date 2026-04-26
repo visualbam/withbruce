@@ -193,7 +193,11 @@ export default define.page(function Home() {
           {EXPERIENCES.map((exp) => (
             <li class="experience-item" key={exp.id}>
               <div class="experience-item__logo">
-                <img src={exp.logo} alt={`${exp.company} logo`} loading="lazy" />
+                <img
+                  src={exp.logo}
+                  alt={`${exp.company} logo`}
+                  loading="lazy"
+                />
               </div>
               <div class="experience-item__meta">
                 <p class="experience-item__title">{exp.title}</p>
