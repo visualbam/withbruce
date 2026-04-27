@@ -126,6 +126,7 @@ small { font-size: var(--text-sm); }
   50%      { transform: translate3d(12px, -8px, 0); }
 }
 
+
 /* ==========================================================================
    Global Layout
    ========================================================================== */
@@ -398,6 +399,7 @@ html.dark  .main-navigation .progress-bar { background: transparent; }
   .hero { padding: 8rem 0 8rem; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5rem), 0 100%); }
 }
 
+
 .hero article {
   color: var(--clr-slate-300);
   display: grid;
@@ -600,12 +602,12 @@ html.dark  .services::before { background: var(--clr-slate-950); }
 
 html.light .services::after {
   background:
-    radial-gradient(circle at 82% 18%, rgba(248,113,113,0.14), transparent 24rem),
+    radial-gradient(circle at 82% 34%, rgba(248,113,113,0.14), transparent 24rem),
     radial-gradient(circle at 18% 86%, rgba(59,130,246,0.10), transparent 22rem);
 }
 html.dark .services::after {
   background:
-    radial-gradient(circle at 84% 14%, rgba(248,113,113,0.14), transparent 24rem),
+    radial-gradient(circle at 84% 32%, rgba(248,113,113,0.14), transparent 24rem),
     radial-gradient(circle at 16% 84%, rgba(59,130,246,0.13), transparent 22rem);
 }
 
