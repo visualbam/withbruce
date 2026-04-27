@@ -126,6 +126,21 @@ small { font-size: var(--text-sm); }
   50%      { transform: translate3d(12px, -8px, 0); }
 }
 
+@keyframes hero-aurora-pulse {
+  0% {
+    opacity: 0.36;
+    transform: translate3d(0, 0, 0) scale(0.92);
+  }
+  48% {
+    opacity: 0.62;
+    transform: translate3d(var(--aurora-shift-x), var(--aurora-shift-y), 0) scale(1.08);
+  }
+  100% {
+    opacity: 0.36;
+    transform: translate3d(0, 0, 0) scale(0.92);
+  }
+}
+
 
 /* ==========================================================================
    Global Layout
@@ -393,6 +408,73 @@ html.dark  .main-navigation .progress-bar { background: transparent; }
     radial-gradient(ellipse at 76% 34%, rgba(255,255,255,0.06) 0%, transparent 42%);
   opacity: 0.88;
   animation: hero-orbit-drift 16s ease-in-out infinite;
+}
+
+.hero-aurora {
+  position: absolute;
+  inset: -18% -12% 8%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: screen;
+  filter: saturate(1.18);
+}
+
+.hero-aurora span {
+  position: absolute;
+  width: var(--aurora-size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--aurora-color) 0%, transparent 66%);
+  filter: blur(38px);
+  opacity: 0.36;
+  animation: hero-aurora-pulse var(--aurora-duration) ease-in-out infinite;
+  animation-delay: var(--aurora-delay);
+}
+
+.hero-aurora span:nth-child(1) {
+  --aurora-size: min(44vw, 34rem);
+  --aurora-color: rgba(248,113,113,0.36);
+  --aurora-duration: 13s;
+  --aurora-delay: -2s;
+  --aurora-shift-x: -1.75rem;
+  --aurora-shift-y: 1.1rem;
+  top: 2%;
+  right: 4%;
+}
+
+.hero-aurora span:nth-child(2) {
+  --aurora-size: min(42vw, 30rem);
+  --aurora-color: rgba(59,130,246,0.22);
+  --aurora-duration: 16s;
+  --aurora-delay: -6s;
+  --aurora-shift-x: 2rem;
+  --aurora-shift-y: -0.8rem;
+  right: 24%;
+  bottom: 0;
+}
+
+.hero-aurora span:nth-child(3) {
+  --aurora-size: min(34vw, 25rem);
+  --aurora-color: rgba(255,255,255,0.11);
+  --aurora-duration: 18s;
+  --aurora-delay: -9s;
+  --aurora-shift-x: 1rem;
+  --aurora-shift-y: 1.5rem;
+  left: 2%;
+  bottom: 8%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::after,
+  .hero-aurora span {
+    animation: none;
+  }
+
+  .hero-aurora span {
+    opacity: 0.34;
+    transform: none;
+  }
 }
 
 @media (min-width: 1100px) {

@@ -38,6 +38,11 @@ export default define.page(function Home() {
 
       {/* Hero */}
       <section class="hero full-width">
+        <div class="hero-aurora" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <article>
           <p class="hero-name">
             Bruce McElroy{" "}
